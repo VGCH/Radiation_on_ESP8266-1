@@ -15,7 +15,7 @@ void setup() {
 Serial.begin(9600);
    Serial.println("Geiger counter"); //Выводим информацию о функции устройство
    Serial.println("Sensor: SI-180G"); //Выводим информацию о сенсоре
-   Serial.println("Measuring time: 5 min"); //Выводим информацию о сенсоре
+   Serial.println("Measuring time: 5 min"); //Выводим информацию о времени замера импульсов с трубки гейгера
    Serial.println("Developer: VGC (https://twitter.com/generator_cher)"); //Выводим информацию о разработчике
  // Подключаемся к сети
    WiFi.mode(WIFI_STA); //Режим Wi-Fi клиент
