@@ -21,7 +21,7 @@ Serial.begin(9600);
    WiFi.mode(WIFI_STA); //Режим Wi-Fi клиент
    WiFi.begin(ssid, password); //Подключение в режиме клиента
   
-  // Wait for connection
+  // Ожидаем подключения
     while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     digitalWrite(led, 1);
@@ -40,7 +40,7 @@ Serial.begin(9600);
 }
 void sendData()
 {
-  // sample for sampleTime in millisecs
+  // Подсчитываем количество импульсов за выбранный промежуток времени(в милисекундах)
   int kount=0;
   boolean kflag=0;
   unsigned long currentTime=0;
@@ -71,7 +71,7 @@ delay (5000);
 //Формируем GET запрос к серверу
   Serial.print("connecting to ");
   Serial.println(host);
-  // Use WiFiClient class to create TCP connections
+  // Используем WiFiClient класс для выполнения TCP подключения
   WiFiClient client;
   const int httpPort = 80;
   if (!client.connect(host, httpPort)) {
@@ -90,13 +90,12 @@ delay (5000);
   Serial.print("Requesting URL: ");
   Serial.println(url);
   digitalWrite(led, 1);
-  // This will send the request to the server
+  // Здесь мы отправляем запрос к удаленному серверу
   client.print(String("GET ") + url + " HTTP/1.1\r\n" +
                "Host: " + host + "\r\n" + 
                "Connection: close\r\n\r\n");
   delay(1000);
-  
-  // Read all the lines of the reply from server and print them to Serial
+ // Выводим то, что отправили к серверу
   while(client.available()){
     String line = client.readStringUntil('\r');
     Serial.print(line);
